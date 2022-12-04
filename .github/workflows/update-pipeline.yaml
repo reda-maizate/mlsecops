@@ -3,7 +3,7 @@ name: Update SageMaker Pipeline
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - src/model_build/**
       - cfg/model_build.yaml
