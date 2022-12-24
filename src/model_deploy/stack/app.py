@@ -2,6 +2,7 @@ import os
 import yaml
 import boto3
 import sagemaker
+from dotenv import load_dotenv
 from constructs import Construct
 from aws_cdk import (
     aws_iam as iam,
@@ -13,6 +14,9 @@ from aws_cdk import (
     Stack,
     App,
 )
+
+load_dotenv()
+IAM_ROLE = os.environ["IAM_ROLE"]
 
 
 def get_model_location_from_ssm(ssm_parameter_name):

@@ -1,31 +1,28 @@
 processing:
-    image_uri: # <your processing ECR image URI>
+    image_uri: ${IMAGE_URI_PROCESSING}
     entry_point: src/model_build/data_preparation/prepare.py
     parameters:
         output_folder: /opt/ml/processing/output
-        bucket_name: face_spoofing_bucket
-        bucket_directory_1: live
-        bucket_directory_2: fake
+        file_name: housing.csv
     instance_count: 1
     instance_type: ml.t3.medium
-    base_job_name: face-spoofing-processing
+    base_job_name: housing
 
-#training:
-#    image_uri: # <your training ECR image URI>
-#    entry_point: train.py
-#    source_dir: src/model_build/training
-#    hyperparameters:
-#        n_estimators: 150
-#        target: MedHouseVal
-#        tracking_uri:
-#        experiment_name: housing
-#        save_model_in_registry: True
-#        model_name: housing-random-forest
-#    instance_count: 1
-#    instance_type: ml.m5.xlarge
-#     instance_type: local # if you want to run job in a container local
-#    base_job_name: housing
-#
-#pipeline:
-#    name: housing
-#
+training:
+    image_uri: ${IMAGE_URI_TRAINING}
+    entry_point: train.py
+    source_dir: src/model_build/training
+    hyperparameters:
+        n_estimators: 150
+        target: MedHouseVal
+        tracking_uri: ${MLFLOW_TRACKING_URI}
+        experiment_name: housing
+        save_model_in_registry: True
+        model_name: housing-random-forest
+    instance_count: 1
+    instance_type: ml.m5.large
+#    instance_type: local # if you want to run job in a container local
+    base_job_name: housing
+
+pipeline:
+    name: housing
