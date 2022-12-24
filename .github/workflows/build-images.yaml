@@ -4,9 +4,9 @@ on:
   push:
 #    branches:
 #      - master
-    paths:
-      - docker/processing/**
-      - docker/training/**
+#    paths:
+#      - docker/processing/**
+#      - docker/training/**
 
 permissions:
   id-token: write
