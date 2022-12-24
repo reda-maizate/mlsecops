@@ -2,8 +2,8 @@ name: Deploy Inference Endpoint and API
 
 on:
   push:
-    branches:
-      - master
+#    branches:
+#      - master
     paths:
       - src/model_deploy/**
       - cfg/model_deploy.yaml
