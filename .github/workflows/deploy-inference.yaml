@@ -4,9 +4,9 @@ on:
   push:
 #    branches:
 #      - master
-    paths:
-      - src/model_deploy/**
-      - cfg/model_deploy.yaml
+#    paths:
+#      - src/model_deploy/**
+#      - cfg/model_deploy.yaml
 
 permissions:
   id-token: write

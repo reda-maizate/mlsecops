@@ -1,7 +1,6 @@
 name: Schedule Model Build Pipeline
 
-on:
-  workflow_dispatch:
+on: [workflow_dispatch]
 #  schedule:
     # Runs "at 12:00 on Friday" (see https://crontab.guru)
 #    - cron: '0 0 * * FRI' # TODO: Change to never
