@@ -2,11 +2,11 @@ name: Update SageMaker Pipeline
 
 on:
   push:
-#    branches:
-#      - master
-#    paths:
-#      - src/model_build/**
-#      - cfg/model_build.yaml
+    branches:
+      - master
+    paths:
+      - src/model_build/**
+      - cfg/model_build.yaml
 
 permissions:
   id-token: write
@@ -38,6 +38,6 @@ jobs:
           pip3 install -r requirements.txt
 
       - name: Create/Update pipeline in SageMaker
-        run: python3 scripts/submit_pipeline.py --run-execution
+        run: python3 scripts/submit_pipeline.py
         env:
           IAM_ROLE: ${{secrets.IAM_ROLE}}
