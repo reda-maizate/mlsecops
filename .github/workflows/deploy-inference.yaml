@@ -13,14 +13,14 @@ permissions:
   contents: read
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
+  env:
       IMAGE_URI_ENDPOINT: ${{ secrets.IMAGE_URI_ENDPOINT }}
       IMAGE_URI_PROCESSING: ${{ secrets.IMAGE_URI_PROCESSING }}
       IMAGE_URI_TRAINING: ${{ secrets.IMAGE_URI_TRAINING }}
       MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
-
+      IAM_ROLE: ${{ secrets.IAM_ROLE }}
+  build:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -57,11 +57,6 @@ jobs:
     needs: build
     env:
       DEPLOYMENT_ENV: staging
-      IMAGE_URI_ENDPOINT: ${{ secrets.IMAGE_URI_ENDPOINT }}
-      IMAGE_URI_PROCESSING: ${{ secrets.IMAGE_URI_PROCESSING }}
-      IMAGE_URI_TRAINING: ${{ secrets.IMAGE_URI_TRAINING }}
-      MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
-      IAM_ROLE: ${{ secrets.IAM_ROLE }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -125,11 +120,6 @@ jobs:
       - test-api
     env:
       DEPLOYMENT_ENV: prod
-      IMAGE_URI_ENDPOINT: ${{ secrets.IMAGE_URI_ENDPOINT }}
-      IMAGE_URI_PROCESSING: ${{ secrets.IMAGE_URI_PROCESSING }}
-      IMAGE_URI_TRAINING: ${{ secrets.IMAGE_URI_TRAINING }}
-      MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
-      IAM_ROLE: ${{ secrets.IAM_ROLE }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
