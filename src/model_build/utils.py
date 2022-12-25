@@ -16,15 +16,14 @@ class ContainerEstimator(Framework):
         distribution=None,
         **kwargs
     ):
-        if hyperparameters:
-            hyperparameters.add("tracking_uri", os.environ["MLFLOW_TRACKING_URI"])
-
         super(ContainerEstimator, self).__init__(
             entry_point, source_dir, hyperparameters, image_uri=image_uri, **kwargs
         )
         self.framework_version = framework_version
         self.py_version = None
-        
+        if hyperparameters:
+            hyperparameters.add("tracking_uri", os.environ["MLFLOW_TRACKING_URI"])
+
     def _configure_distribution(self, distributions):
         return None
 
