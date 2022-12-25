@@ -40,4 +40,4 @@ jobs:
       - name: Create/Update pipeline in SageMaker
         run: python3 scripts/submit_pipeline.py
         env:
-          - IAM_ROLE: ${{secrets.IAM_ROLE}}
+          IAM_ROLE: ${{secrets.IAM_ROLE}}
