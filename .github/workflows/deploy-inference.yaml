@@ -12,13 +12,15 @@ permissions:
   id-token: write
   contents: read
 
+
+env:
+    IMAGE_URI_ENDPOINT: ${{ secrets.IMAGE_URI_ENDPOINT }}
+    IMAGE_URI_PROCESSING: ${{ secrets.IMAGE_URI_PROCESSING }}
+    IMAGE_URI_TRAINING: ${{ secrets.IMAGE_URI_TRAINING }}
+    MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+    IAM_ROLE: ${{ secrets.IAM_ROLE }}
+
 jobs:
-  env:
-      IMAGE_URI_ENDPOINT: ${{ secrets.IMAGE_URI_ENDPOINT }}
-      IMAGE_URI_PROCESSING: ${{ secrets.IMAGE_URI_PROCESSING }}
-      IMAGE_URI_TRAINING: ${{ secrets.IMAGE_URI_TRAINING }}
-      MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
-      IAM_ROLE: ${{ secrets.IAM_ROLE }}
   build:
     runs-on: ubuntu-latest
     steps:
