@@ -4,8 +4,8 @@ on:
   push:
 #    branches:
 #      - master
-    paths:
-      - docker/mlflow_endpoint/**
+#    paths:
+#      - docker/mlflow_endpoint/**
 
 permissions:
   id-token: write
