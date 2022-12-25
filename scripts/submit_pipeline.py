@@ -3,15 +3,12 @@ import sys
 import yaml
 import logging
 import argparse
-import sagemaker
-from dotenv import load_dotenv
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from src.model_build.pipeline import get_pipeline
 
 logging.basicConfig(level=logging.INFO)
 
-load_dotenv()
 IAM_ROLE = os.environ["IAM_ROLE"]
 
 if __name__ == "__main__":
