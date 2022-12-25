@@ -3,13 +3,11 @@ import sys
 import yaml
 import logging
 import sagemaker
-from dotenv import load_dotenv
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from src.model_build import jobs
 
 logging.basicConfig(level=logging.INFO)
-load_dotenv()
 
 IAM_ROLE = os.environ["IAM_ROLE"]
 

@@ -1,4 +1,7 @@
+import os
+
 from sagemaker.estimator import Framework, Estimator
+from typing import Dict, Optional
 
 
 class ContainerEstimator(Framework):
@@ -8,11 +11,14 @@ class ContainerEstimator(Framework):
         framework_version=None,
         py_version=None,
         source_dir=None,
-        hyperparameters=None,
+        hyperparameters: Optional[Dict]=None,
         image_uri=None,
         distribution=None,
         **kwargs
     ):
+        if hyperparameters:
+            hyperparameters.add("tracking_uri", os.environ["MLFLOW_TRACKING_URI"])
+
         super(ContainerEstimator, self).__init__(
             entry_point, source_dir, hyperparameters, image_uri=image_uri, **kwargs
         )

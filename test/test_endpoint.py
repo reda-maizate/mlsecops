@@ -42,20 +42,30 @@ if __name__ == "__main__":
 
     # SEND A TEST DATA POINT TO THE API AND VERIFYING THE RESPONSE STATUS CODE
     test_payload = {
-        "columns": [
-            "MedInc",
-            "HouseAge",
-            "AveRooms",
-            "AveBedrms",
-            "Population",
-            "AveOccup",
-            "Latitude",
-            "Longitude",
-        ],
-        "index": [0],
-        "data": [
-            [8.3252, 41, 6.9841269841, 1.0238095238, 322, 2.5555555556, 37.88, -122.23]
-        ],
+        "dataframe_split": {
+            "columns": [
+                "MedInc",
+                "HouseAge",
+                "AveRooms",
+                "AveBedrms",
+                "Population",
+                "AveOccup",
+                "Latitude",
+                "Longitude"
+            ],
+            "data": [
+                [
+                    8.3252,
+                    41,
+                    6.9841269841,
+                    1.0238095238,
+                    322,
+                    2.5555555556,
+                    37.88,
+                    -122.23
+                ]
+            ]
+        }
     }
 
     results = test_api(api_url, test_payload)

@@ -1,5 +1,4 @@
 processing:
-    image_uri: ${IMAGE_URI_PROCESSING}
     entry_point: src/model_build/data_preparation/prepare.py
     parameters:
         output_folder: /opt/ml/processing/output
@@ -9,13 +8,11 @@ processing:
     base_job_name: housing
 
 training:
-    image_uri: ${IMAGE_URI_TRAINING}
     entry_point: train.py
     source_dir: src/model_build/training
     hyperparameters:
         n_estimators: 150
         target: MedHouseVal
-        tracking_uri: ${MLFLOW_TRACKING_URI}
         experiment_name: housing
         save_model_in_registry: True
         model_name: housing-random-forest

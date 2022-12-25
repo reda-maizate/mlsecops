@@ -1,8 +1,6 @@
 import os
 import yaml
 import boto3
-import sagemaker
-from dotenv import load_dotenv
 from constructs import Construct
 from aws_cdk import (
     aws_iam as iam,
@@ -15,8 +13,8 @@ from aws_cdk import (
     App,
 )
 
-load_dotenv()
 IAM_ROLE = os.environ["IAM_ROLE"]
+IMAGE_URI_ENDPOINT = os.environ["IMAGE_URI_ENDPOINT"]
 
 
 def get_model_location_from_ssm(ssm_parameter_name):
@@ -33,7 +31,7 @@ class InferenceStack(Stack):
         # ======== CONFIG  =========
         # ==========================
         # IAM ROLE FOR ENDPOINT AND LAMBDA FUNCTION
-        iam_role = sagemaker.get_execution_role()
+        iam_role = IAM_ROLE
 
         # READ CONFIG
         with open("../../../cfg/model_deploy.yaml") as f:
@@ -48,7 +46,7 @@ class InferenceStack(Stack):
         # ===== SAGEMAKER MODEL =====
         # ===========================
         container = sagemaker_.CfnModel.ContainerDefinitionProperty(
-            image=config["endpoint"]["image_uri"],
+            image=IMAGE_URI_ENDPOINT,
             model_data_url=model_s3_location,
             environment={
                 "MLFLOW_DEPLOYMENT_FLAVOR_NAME": "python_function",

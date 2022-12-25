@@ -2,7 +2,6 @@ import sagemaker
 from src.model_build import jobs
 from sagemaker.inputs import TrainingInput
 from sagemaker.workflow.pipeline import Pipeline
-from sagemaker.workflow.parameters import ParameterString
 from sagemaker.workflow.steps import ProcessingStep, TrainingStep
 
 

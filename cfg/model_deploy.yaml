@@ -1,14 +1,12 @@
 model:
     name: housing-random-forest
     version: 1
-    tracking_uri: ${MLFLOW_TRACKING_URI}
     location_ssm_parameter: /housing-random-forest/versions/1
 
 endpoint:
     name: housing
     instance_type: ml.m5.xlarge
     instance_count: 1
-    image_uri: ${IMAGE_URI_ENDPOINT}
 
 
 
