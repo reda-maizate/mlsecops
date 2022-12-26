@@ -2,11 +2,11 @@ name: Update SageMaker Pipeline
 
 on:
   push:
-#    branches:
-#      - master
-#    paths:
-#      - src/model_build/**
-#      - cfg/model_build.yaml
+    branches:
+      - master
+    paths:
+      - src/model_build/**
+      - cfg/model_build.yaml
 
 permissions:
   id-token: write
