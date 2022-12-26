@@ -2,10 +2,10 @@ name: Build and push MLflow docker image to ECR
 
 on:
   push:
-    branches:
-      - master
-    paths:
-      - docker/mlflow_endpoint/**
+#    branches:
+#      - master
+#    paths:
+#      - docker/mlflow_endpoint/**
 
 permissions:
   id-token: write

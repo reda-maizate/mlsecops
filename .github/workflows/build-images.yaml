@@ -2,11 +2,11 @@ name: Build and push docker images
 
 on:
   push:
-    branches:
-      - master
-    paths:
-      - docker/processing/**
-      - docker/training/**
+#    branches:
+#      - master
+#    paths:
+#      - docker/processing/**
+#      - docker/training/**
 
 permissions:
   id-token: write
