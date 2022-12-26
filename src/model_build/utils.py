@@ -22,7 +22,7 @@ class ContainerEstimator(Framework):
         self.framework_version = framework_version
         self.py_version = None
         if hyperparameters:
-            hyperparameters.add("tracking_uri", os.environ["MLFLOW_TRACKING_URI"])
+            hyperparameters["tracking_uri"] = os.environ["MLFLOW_TRACKING_URI"]
 
     def _configure_distribution(self, distributions):
         return None
