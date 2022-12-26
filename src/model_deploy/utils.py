@@ -7,10 +7,12 @@ import sagemaker
 from mlflow.tracking import MlflowClient
 from mlflow.tracking.artifact_utils import _download_artifact_from_uri
 
+MLFLOW_TRACKING_URI = os.environ["MLFLOW_TRACKING_URI"]
+
 
 class MLflowHandler:
     def __init__(self, cfg):
-        mlflow.set_registry_uri(cfg["model"]["tracking_uri"])
+        mlflow.set_registry_uri(MLFLOW_TRACKING_URI)
         self.client = MlflowClient()
         self.model_name = cfg["model"]["name"]
         self.model_version = cfg["model"]["version"]

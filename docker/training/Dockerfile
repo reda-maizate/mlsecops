@@ -10,5 +10,5 @@ RUN apt-get update \
 # install python dependencies
 RUN pip install --no-cache --upgrade \
     scikit-learn==1.1.2 \
-    mlflow==1.28.0 \
+    mlflow==2.0.1 \
     sagemaker-training==4.2.6

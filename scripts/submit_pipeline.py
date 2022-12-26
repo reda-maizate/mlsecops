@@ -3,12 +3,13 @@ import sys
 import yaml
 import logging
 import argparse
-import sagemaker
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from src.model_build.pipeline import get_pipeline
 
 logging.basicConfig(level=logging.INFO)
+
+IAM_ROLE = os.environ["IAM_ROLE"]
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -16,7 +17,7 @@ if __name__ == "__main__":
     args, _ = parser.parse_known_args()
 
     # IAM ROLE
-    iam_role = sagemaker.get_execution_role()
+    iam_role = IAM_ROLE
 
     # CONFIG
     with open("cfg/model_build.yaml") as f:
